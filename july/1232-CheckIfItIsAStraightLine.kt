@@ -10,7 +10,7 @@ package july
 
 fun main() {
     println(
-        Solution().checkStraightLine(
+        Solution1232().checkStraightLine(
             arrayOf(
                 intArrayOf(1, 2),
                 intArrayOf(2, 3),
@@ -22,7 +22,7 @@ fun main() {
         )
     )
     println(
-        Solution().checkStraightLine(
+        Solution1232().checkStraightLine(
             arrayOf(
                 intArrayOf(1, 1),
                 intArrayOf(2, 2),
@@ -35,7 +35,7 @@ fun main() {
     )
 }
 
-class Solution {
+class Solution1232 {
     fun checkStraightLine(coordinates: Array<IntArray>): Boolean {
         val x0 = coordinates[0][0]
         val x1 = coordinates[1][0]
