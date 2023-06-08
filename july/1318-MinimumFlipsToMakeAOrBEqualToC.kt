@@ -16,6 +16,12 @@ fun main() {
     println(Solution1318().minFlips(4, 2, 7))
     //0
     println(Solution1318().minFlips(1, 2, 3))
+    //3
+    println(Solution1318().minFlipsV2(2, 6, 5))
+    //1
+    println(Solution1318().minFlipsV2(4, 2, 7))
+    //0
+    println(Solution1318().minFlipsV2(1, 2, 3))
 }
 
 class Solution1318 {
@@ -35,4 +41,34 @@ class Solution1318 {
         }
         return result
     }
+
+    // another version, when we're going from left to the right
+    fun minFlipsV2(a: Int, b: Int, c: Int): Int {
+        var result = 0
+        val ab = a.or(b)
+        var xor = ab.xor(c)
+        var localA = a
+        var localB = b
+        var localC = c
+        while (localA > 0 || localB > 0 || localC > 0) {
+            val minA = localA and 1
+            val minB = localB and 1
+            val minC = localC and 1
+
+            if (xor and 1 == 1) {
+                result += if (minA == minB && minC == 0) {
+                    2
+                } else {
+                    1
+                }
+            }
+
+            xor = xor shr 1
+            localA = localA shr 1
+            localB = localB shr 1
+            localC = localC shr 1
+        }
+        return result
+    }
+
 }
